@@ -1,4 +1,5 @@
 #include<LiquidCrystal.h>
+
 //note enable pin numbers and lcd 12 is changed to 14 
 LiquidCrystal lcd(14,11,5,4,1,2);
 const int l1=12;
@@ -10,7 +11,7 @@ int pot;
 
 const int potpin = 26;
 
-void Forward(int p)
+void Forward(int p) //Forward Movement
 {
   analogWrite(l1,p);
   analogWrite(l2,0);
@@ -24,21 +25,21 @@ void Stop()
   analogWrite(r1,0);
   analogWrite(r2,0);
 }
-void Reverse(int p)
+void Reverse(int p)  //Backward Movement
 {
   analogWrite(l1,0);
   analogWrite(l2,p);
   analogWrite(r1,0);
   analogWrite(r2,p);
 }
-void Right(int p)
+void Right(int p)    //Right Movement
 {
   analogWrite(l1,0);
   analogWrite(l2,p);
   analogWrite(r1,p);
   analogWrite(r2,0);
 }
-void Left(int p)
+void Left(int p) //Left Movement
 {
   analogWrite(l1,p);
   analogWrite(l2,0);
@@ -50,11 +51,16 @@ void setup()
 {
   Serial.begin(9600);
   
+  //Setting up output pins
   pinMode(l1, OUTPUT);
   pinMode(l2, OUTPUT);
   pinMode(r1, OUTPUT);
   pinMode(r2, OUTPUT);
   
+  //Setting up input pins
+  pinMode(potpin, INPUT);
+  
+  //Initializing LCD
   lcd.begin(16,2);
   lcd.print("Welcome Aboard");
   delay(1000);
