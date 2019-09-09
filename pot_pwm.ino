@@ -70,7 +70,7 @@ void loop()
 {
   lcd.clear();
   delay(50); 
-  while(!Serial.available())
+  while(!Serial.available()) //No serial data from Serial Monitor
   {
     lcd.clear();
     lcd.print("No data available");
@@ -127,3 +127,4 @@ if(c=='S')
   lcd.setCursor(0, 0);
 }
 }
+
